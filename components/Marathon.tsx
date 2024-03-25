@@ -1,35 +1,31 @@
-import { StyleSheet, Text, View } from 'react-native';
 import React, { FC } from 'react';
 import { IMarathon } from '../types/IMarathon';
+import styled from 'styled-components/native';
 
+const MarathonTitle = styled.Text`
+    font-size: 24px;
+    font-weight: 800;
+`;
+
+const MarathonText = styled.Text`
+    font-size: 14px;
+`;
+
+const MarathonWrapper = styled.View`
+    margin: 10px 0;
+
+    border-bottom-width: 1px;
+    border-bottom-color: black;
+`;
+
+// On main screen buttons with marathon card
 const Marathon: FC<IMarathon> = ({ title, text }) => {
     return (
-        <View style={styles.marathon}>
-            <Text style={styles.marathonTitle}>{title}</Text>
-            <Text style={styles.marathonText}>{text}</Text>
-        </View>
+        <MarathonWrapper>
+            <MarathonTitle>{title}</MarathonTitle>
+            <MarathonText>{text}</MarathonText>
+        </MarathonWrapper>
     );
 };
 
 export default Marathon;
-
-const styles = StyleSheet.create({
-    marathon: {
-        marginBottom: 8,
-        marginTop: 8,
-        borderBottomColor: 'black',
-        borderBottomWidth: 1,
-        borderTopWidth: 1,
-        borderRadius: 5,
-        paddingVertical: 5,
-    },
-
-    marathonTitle: {
-        fontSize: 24,
-        fontWeight: '800',
-    },
-
-    marathonText: {
-        fontSize: 14,
-    },
-});
