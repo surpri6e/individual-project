@@ -1,4 +1,4 @@
-import { QuestionsScreenNavigationParamProps } from './navigationTypes';
+import { QuestionsScreenNavigationParamProps } from '../../navigationTypes';
 
 export interface IQuestionsScreen {
     navigation: QuestionsScreenNavigationParamProps['navigation'];

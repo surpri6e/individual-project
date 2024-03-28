@@ -1,4 +1,4 @@
-import { MainScreenNavigationParamProps } from './navigationTypes';
+import { MainScreenNavigationParamProps } from '../../navigationTypes';
 
 export interface IMainScreen {
     navigation: MainScreenNavigationParamProps['navigation'];

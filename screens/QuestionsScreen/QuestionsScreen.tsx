@@ -1,12 +1,17 @@
 import { Text, View } from 'react-native';
-import React, { FC } from 'react';
-import { IQuestionsScreen } from '../../types/IQuestionsScreen';
+import React, { FC, useEffect } from 'react';
+import { IQuestionsScreen } from '../../types/interfaces/screenTypes/IQuestionsScreen';
 import { Container } from '../../layouts/Container';
 
 const QuestionsScreen: FC<IQuestionsScreen> = ({ navigation, route }) => {
+    const { title, questions, answers } = route.params;
+
+    useEffect(() => {
+        navigation.setOptions({ title });
+    }, []);
     return (
         <Container>
-            <Text>QuestionsScreen</Text>
+            <Text>{questions[0]}</Text>
         </Container>
     );
 };

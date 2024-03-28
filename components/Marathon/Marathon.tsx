@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { IMarathon } from '../../types/IMarathon';
+import { IMarathon } from '../../types/interfaces/IMarathon';
 import { MarathonText, MarathonTitle, MarathonWrapper } from './MarathonStyles';
 
 // On main screen buttons with marathon card

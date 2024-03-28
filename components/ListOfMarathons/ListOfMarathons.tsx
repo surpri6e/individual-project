@@ -2,8 +2,9 @@ import { FlatList, TouchableOpacity, View } from 'react-native';
 import React, { FC } from 'react';
 import Marathon from '../Marathon/Marathon';
 import { listOfMarathons } from '../../constants/listOfMarathons';
-import { IMainScreen } from '../../types/IMainScreen';
+import { IMainScreen } from '../../types/interfaces/screenTypes/IMainScreen';
 import { ListOfMarathonsWrapper } from './ListOfMarathonsStyles';
+import { listOfMarathonsQuestions } from '../../constants/listOfMarathonsQuestions';
 
 const ListOfMarathons: FC<IMainScreen> = ({ navigation, route }) => {
     return (
@@ -11,7 +12,9 @@ const ListOfMarathons: FC<IMainScreen> = ({ navigation, route }) => {
             <FlatList
                 data={listOfMarathons}
                 renderItem={({ item }) => (
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('QuestionsScreen', listOfMarathonsQuestions.filter((elem) => elem.title === item.title)[0])}
+                    >
                         <Marathon title={item.title} text={item.text} />
                     </TouchableOpacity>
                 )}

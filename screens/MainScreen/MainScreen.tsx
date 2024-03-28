@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import ListOfMarathons from '../../components/ListOfMarathons/ListOfMarathons';
 import { Container } from '../../layouts/Container';
 import { MainScreenTitle } from './MainScreenStyles';
-import { IMainScreen } from '../../types/IMainScreen';
+import { IMainScreen } from '../../types/interfaces/screenTypes/IMainScreen';
 
 const MainScreeen: FC<IMainScreen> = ({ navigation, route }) => {
     return (
