@@ -6,12 +6,13 @@ import { IMainScreen } from '../../types/interfaces/screenTypes/IMainScreen';
 import { ListOfMarathonsWrapper } from './ListOfMarathonsStyles';
 import { listOfMarathonsQuestions } from '../../constants/listOfMarathonsQuestions';
 
-const ListOfMarathons: FC<IMainScreen> = ({ navigation, route }) => {
+const ListOfMarathons: FC<IMainScreen> = ({ navigation }) => {
     return (
         <ListOfMarathonsWrapper>
             <FlatList
                 data={listOfMarathons}
                 renderItem={({ item }) => (
+                    // Redirect on Questions Screen
                     <TouchableOpacity
                         onPress={() => navigation.navigate('QuestionsScreen', listOfMarathonsQuestions.filter((elem) => elem.title === item.title)[0])}
                     >

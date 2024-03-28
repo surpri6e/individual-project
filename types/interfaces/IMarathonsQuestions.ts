@@ -1,6 +1,6 @@
-export interface IMarathonAnswer {
-    [answer: string]: boolean;
-}
+// Api about marathons info
+
+export type IMarathonAnswer = [[string, boolean], [string, boolean], [string, boolean]];
 
 export interface IMarathonsQuestion {
     title: string;
