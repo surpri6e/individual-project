@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const QuestionScreenStatingMessage = styled.Text`
+export const QuestionScreenTitleMessage = styled.Text`
     font-size: 20px;
     font-weight: 800;
     margin-bottom: 20px;

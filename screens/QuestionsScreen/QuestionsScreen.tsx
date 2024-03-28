@@ -6,7 +6,7 @@ import {
     QuestionScreenMainAnswerText,
     QuestionScreenMainButton,
     QuestionScreenMainText,
-    QuestionScreenStatingMessage,
+    QuestionScreenTitleMessage,
     QuestionsScreenAnswer,
     QuestionsScreenMainBoldText,
 } from './QuestionsScreenStyles';
@@ -21,6 +21,9 @@ const QuestionsScreen: FC<IQuestionsScreen> = ({ navigation, route }) => {
     const [questionIndex, setQuestionIndex] = useState(0);
 
     const [currentAnswer, setCurrentAnswer] = useState(0);
+    const [answersResult, setAnswersResult] = useState<boolean[]>([]);
+
+    const [scores, setScores] = useState(0);
 
     useEffect(() => {
         navigation.setOptions({ title });
@@ -32,6 +35,18 @@ const QuestionsScreen: FC<IQuestionsScreen> = ({ navigation, route }) => {
             navigation.setOptions({ headerBackVisible: false });
         }
     }, [isStart]);
+
+    useEffect(() => {
+        let result = 0;
+
+        answersResult.forEach((elem) => {
+            if (elem) {
+                result += 1;
+            }
+        });
+
+        setScores(result);
+    }, [answersResult]);
 
     return (
         // If user alredy started the marathon
@@ -61,12 +76,41 @@ const QuestionsScreen: FC<IQuestionsScreen> = ({ navigation, route }) => {
                         </QuestionsScreenAnswer>
                     ))}
 
-                    <QuestionScreenMainButton>Далее</QuestionScreenMainButton>
+                    {questions.length - 1 != questionIndex ? (
+                        <TouchableOpacity
+                            onPress={() => {
+                                setAnswersResult([...answersResult, answers[questionIndex][currentAnswer][1]]);
+                                setQuestionIndex(questionIndex + 1);
+                            }}
+                        >
+                            <QuestionScreenMainButton>Далее</QuestionScreenMainButton>
+                        </TouchableOpacity>
+                    ) : (
+                        <TouchableOpacity
+                            onPress={() => {
+                                setAnswersResult([...answersResult, answers[questionIndex][currentAnswer][1]]);
+                                setIsStart(false);
+                                setIsEnd(true);
+                            }}
+                        >
+                            <QuestionScreenMainButton>Закончить</QuestionScreenMainButton>
+                        </TouchableOpacity>
+                    )}
+                </>
+            ) : isEnd ? (
+                <>
+                    <QuestionScreenTitleMessage>Поздравляем вы набрали</QuestionScreenTitleMessage>
+                    <QuestionScreenMainText>
+                        {scores} из {answersResult.length} очков.
+                    </QuestionScreenMainText>
+                    <TouchableOpacity onPress={() => navigation.navigate('MainScreen')}>
+                        <QuestionScreenMainButton>На главную старницу</QuestionScreenMainButton>
+                    </TouchableOpacity>
                 </>
             ) : (
                 // If user has not yet started the marathon
                 <>
-                    <QuestionScreenStatingMessage>{title}</QuestionScreenStatingMessage>
+                    <QuestionScreenTitleMessage>{title}</QuestionScreenTitleMessage>
                     <QuestionScreenMainText>
                         Сейчас вам предстоит пройти марафон состоящий из {questions.length} вопросов. Когда будете готовы нажмите соответствующую кнопку. Время
                         у вас неограниченное, задания требуется выполнять по порядку. В конце вы узнаете свой результат и краткие рекомендации.
