@@ -99,7 +99,9 @@ const QuestionsScreen: FC<IQuestionsScreen> = ({ navigation, route }) => {
                 </>
             ) : isEnd ? (
                 <>
-                    <QuestionScreenTitleMessage>Поздравляем вы набрали</QuestionScreenTitleMessage>
+                    <QuestionScreenTitleMessage>
+                        {scores > answersResult.length / 2 ? 'Поздравляем вы набрали' : 'К сожалению вы набрали'}
+                    </QuestionScreenTitleMessage>
                     <QuestionScreenMainText>
                         {scores} из {answersResult.length} очков.
                     </QuestionScreenMainText>
@@ -113,7 +115,7 @@ const QuestionsScreen: FC<IQuestionsScreen> = ({ navigation, route }) => {
                     <QuestionScreenTitleMessage>{title}</QuestionScreenTitleMessage>
                     <QuestionScreenMainText>
                         Сейчас вам предстоит пройти марафон состоящий из {questions.length} вопросов. Когда будете готовы нажмите соответствующую кнопку. Время
-                        у вас неограниченное, задания требуется выполнять по порядку. В конце вы узнаете свой результат и краткие рекомендации.
+                        у вас неограниченное, задания требуется выполнять по порядку. В конце вы узнаете свой результат.
                     </QuestionScreenMainText>
                     <TouchableOpacity onPress={() => setIsStart(true)}>
                         <QuestionScreenMainButton>Начать</QuestionScreenMainButton>
