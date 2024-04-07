@@ -106,7 +106,7 @@ const QuestionsScreen: FC<IQuestionsScreen> = ({ navigation, route }) => {
                         {scores} из {answersResult.length} очков.
                     </QuestionScreenMainText>
                     <TouchableOpacity onPress={() => navigation.navigate('MainScreen')}>
-                        <QuestionScreenMainButton>На главную старницу</QuestionScreenMainButton>
+                        <QuestionScreenMainButton>На главную страницу</QuestionScreenMainButton>
                     </TouchableOpacity>
                 </>
             ) : (
