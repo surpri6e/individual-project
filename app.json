@@ -1,7 +1,7 @@
 {
     "expo": {
-        "name": "Подготовка к ЕГЭ",
-        "slug": "Подготовка к ЕГЭ",
+        "name": "Training EGE",
+        "slug": "Training EGE",
         "version": "1.0.0",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
